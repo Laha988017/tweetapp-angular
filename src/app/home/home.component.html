@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Welcome @sinjon25!</h2>
+      <div align="center">
+        <div *ngFor="let item of items">
+        <div class="card" style="width: 100vh;">
+          
+          <div class="card-body">
+            <p class="card-text">Tweet message</p>
+            <a href="#" class="btn btn-primary"><i class="bi bi-hand-thumbs-up"></i></a>&nbsp;
+            <button type="button" class="btn btn-primary" (click)="openModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <i class="bi bi-chat"></i>
+            </button>&nbsp;
+            <a href="#" class="btn btn-primary"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>&nbsp;
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+                <h4 class="modal-title">Comment a Post</h4>
+                <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form #f="ngForm" (ngSubmit)="submit(f)">
+              <div class="form-group">
+                  <label for="userName">User Name</label>
+                  <input required ngModel name="userName" #userName="ngModel" type="text" class="form-control"
+          placeholder="User Name" aria-label="User Name" id="userName">
+              </div>
+              <div class="form-group mt-2">
+                  <label for="password">Password</label>
+                  <input required ngModel name="password" #password="ngModel" type="password" class="form-control"
+          placeholder="Password" aria-label="Password" id="password">
+              </div>
+              <button [disabled]="!f.valid || clicked" class="btn btn-primary col-12 mt-4 border-100">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                  {{registerButtonText}}
+              </button>
+              <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+          </form>
+          </div>
+          <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+          </div>
+      </div>
+  </div>
+</div>
