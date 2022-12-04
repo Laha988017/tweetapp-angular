@@ -10,6 +10,7 @@ import { AuthService } from './service/auth.service';
 })
 export class AppComponent {
   authService: AuthService;
+  display: string | undefined;
   constructor(private route: ActivatedRoute,
     private router: Router,authService: AuthService){
       this.authService = authService;
@@ -26,6 +27,12 @@ export class AppComponent {
   }
 isLoggedIn(){
   return localStorage.getItem('currentUser')!=null
+}
+openModal() {
+  this.display = "block";
+}
+onCloseHandled() {
+  this.display = "none";
 }
   title = 'tweetapp-angular';
 }

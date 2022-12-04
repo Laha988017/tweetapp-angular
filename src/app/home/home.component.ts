@@ -11,22 +11,37 @@ export class HomeComponent implements OnInit {
   registerData: any;
   loading = false;
   error = false;
-
-  constructor() { }
-  items = [{
-    tweet: "Tweet1",
+  username = "zust8017"
+  tweetId: number = 0;
+  tweetItems = [{
+    tweetId: 1,
+    tweet: "This is a tweet done for testing by sinjon Tweet1",
+    date: Date.now(),
+    username: "sinjon"
   },
   {
-    tweet: "Tweet2",
+    tweetId: 2,
+    tweet: "This is a tweet done for testing by sinjon Tweet2",
+    date: Date.now(),
+    username: "Laha"
   },
   {
-    tweet: "Tweet3",
+    tweetId: 3,
+    tweet: "This is a tweet done for testing by sinjon Tweet3",
+    date: Date.now(),
+    username: "sneshes"
   }]
+  constructor() {
+   }
+  
   display = "none";
   ngOnInit(): void {
+    
   }
 
-  openModal() {
+  openModal(tweetId:number) {
+    this.tweetId = tweetId-1
+    console.log(tweetId)
     this.display = "block";
   }
   onCloseHandled() {
@@ -61,5 +76,7 @@ export class HomeComponent implements OnInit {
     //   )
     //window.location.reload();
   }
+
+
 
 }

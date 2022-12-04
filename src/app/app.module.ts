@@ -11,13 +11,17 @@ import { JwtInterceptor } from './util/jwt.interceptor';
 import { ErrorInterceptor } from './util/error.interceptor';
 import { AuthGuard } from './util/auth.guard';
 import { HomeComponent } from './home/home.component';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
+import { TweetPageComponent } from './tweet-page/tweet-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    DateAgoPipe,
+    TweetPageComponent
   ],
   imports: [
     BrowserModule,

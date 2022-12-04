@@ -1,35 +1,42 @@
-<div>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="padding-left: 10px; padding-right: 10px; ">
-    <a class="navbar-brand" routerLink="dashboard">TweetApp</a>
-    <div class="collapse navbar-collapse" >
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="register" *ngIf="!isLoggedIn()">Register</a>
-        </li>
-      </ul>
-      <span class="navbar-text">
-        <a class="btn btn-success" routerLink="login" *ngIf="!isLoggedIn()">Login</a>
-        <a class="btn btn-danger" *ngIf="isLoggedIn()" routerLink="login" (click)="logout()">Logout</a>
-      </span>
-    </div>
-  </nav>
-  
-  <br> 
-  <router-outlet></router-outlet>
-  <br>
-  
-  <div>
-    <footer class="footer">
-      <div style="  
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: rgb(0, 24, 44);
-      color: rgba(182, 253, 255, 0.751);
-      text-align: center;" >
-        <span> 2022 © TweetApp </span>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow-sm">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0 p-2" href="#">Tweetapp</a>
+
+  <ul class="navbar-nav px-3">
+    <li class="nav-item">
+      <a class="nav-link" (click)="logout()">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid mt-5">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item p-2 m-2">
+            <a
+              class="nav-link border-bottom text-muted d-flex"
+              routerLink="/home"
+            >
+              <p class="h5">
+                <i class="bi bi-house-door-fill m-2"></i>Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item p-2 m-2">
+            <a
+              class="nav-link border-bottom text-muted d-flex"
+              routerLink="/tweet"
+            >
+              <p class="h5"><i class="bi bi-cursor-fill m-2"></i>Tweet</p>
+            </a>
+          </li>
+        </ul>
       </div>
-    </footer>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10">
+      <router-outlet></router-outlet>
+    </main>
   </div>
-  </div>
+</div>

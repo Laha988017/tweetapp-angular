@@ -8,6 +8,7 @@ export const environment = {
   production: false,
   apiUrl: baseUrl.apiUrl,
   register:`${baseUrl.apiUrl}/register`,
+  login:`${baseUrl.apiUrl}/login`,
 };
 
 /*
