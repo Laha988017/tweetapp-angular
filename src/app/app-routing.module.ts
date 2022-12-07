@@ -4,15 +4,13 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TweetPageComponent } from './tweet-page/tweet-page.component';
+import { AuthGuard } from './util/auth.guard';
 
 const routes: Routes = [
-  {path:'login', component:LoginComponent},
-  // {path:'aadhar', component:AadharComponent, canActivate:[AuthGuard]},
-  // {path:'dashboard', component:DashboardComponent,canActivate:[AuthGuard]},
-  {path:'register', component:RegisterComponent},
-  {path:'home', component:HomeComponent},
-  {path:'tweet', component:TweetPageComponent},
-  // {path:'pension-details', component:AmountComponent,canActivate:[AuthGuard]}
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'my-tweet', component: TweetPageComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

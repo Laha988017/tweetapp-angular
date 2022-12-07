@@ -9,37 +9,40 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  login(data:User) {
-    return this.http.post<any>(`${environment.login}`,  data )
-    .pipe(map(response => {
-      console.log(response);
-      // login successful if there's a jwt token in the response
-      if(response.status == 500) {
-        return response;
-      }
-      if (response.data && response.status == 200) {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', response.data);
-        this.token = localStorage.getItem('currentUser')
-        console.log("Local Storage - "+this.token)
-        this.currentUserSubject.next(response.data);
-      }
+  login(data: User) {
+    return this.http.post<any>(`${environment.login}`, data)
+      .pipe(map(response => {
+        console.log(response);
+        // login successful if there's a jwt token in the response
+        if (response.status == 500) {
+          return response;
+        }
+        if (response.data && response.status == 200) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          this.currentUserValue = response.data.jwt;
+          localStorage.setItem('currentUser', response.data.jwt);
+          localStorage.setItem('username', response.data.username);
+          this.token = localStorage.getItem('currentUser')
+          console.log("Local Storage - " + this.token)
+          this.currentUserSubject.next(response.data);
+        }
 
-      return response;
-    }));
+        return response;
+      }));
   }
   currentUserSubject: BehaviorSubject<any>;
   currentUser: any;
   token: string | null;
 
   gettoken() {
-      return true
+    return !!localStorage.getItem("currentUser");
   }
-  
+
   logout() {
     // remove user from local storage to log user out
     console.log("In logout")
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('username');
     return true;
   }
   currentUserValue: any;
@@ -50,11 +53,11 @@ export class AuthService {
     this.token = localStorage.getItem('currentUser')
   }
 
-  register(registerData:User) {
+  register(registerData: User) {
     return this.http.post<any>(`${environment.register}`, registerData)
-    .pipe(map(response => {
-      console.log(response);
-      return response;
-    }));
+      .pipe(map(response => {
+        console.log(response);
+        return response;
+      }));
   }
 }
