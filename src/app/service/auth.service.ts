@@ -38,6 +38,10 @@ export class AuthService {
     return !!localStorage.getItem("currentUser");
   }
 
+  getAllUsersWithRegex() {
+    return this.http.get<any>(`${environment.regex}`)
+  }
+
   logout() {
     // remove user from local storage to log user out
     console.log("In logout")

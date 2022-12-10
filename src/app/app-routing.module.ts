@@ -9,6 +9,7 @@ import { AuthGuard } from './util/auth.guard';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: '/register', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'my-tweet', component: TweetPageComponent, canActivate: [AuthGuard] },
 ];
