@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/User';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { first, map } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,8 +38,8 @@ export class AuthService {
     return !!localStorage.getItem("currentUser");
   }
 
-  getAllUsersWithRegex() {
-    return this.http.get<any>(`${environment.regex}`)
+  getAllUsersWithRegex(user: any): Observable<any> {
+    return this.http.get<any>(`${environment.regex}${user}`);
   }
 
   logout() {

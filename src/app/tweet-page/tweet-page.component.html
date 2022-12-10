@@ -19,9 +19,9 @@
           <div class="form-group">
             <input
               required
-              ngModel
+              [(ngModel)]="user"
+              (change)="getUsernames(user)"
               name="username"
-              #username="ngModel"
               type="text"
               class="form-control"
               placeholder="Enter user"
@@ -29,6 +29,12 @@
               style="width: 100%"
               id="username"
             />
+            <div
+              *ngFor="let u of userlist"
+              class="p-3 my-3 text-bold text-dark rounded shadow-lg"
+            >
+              <p>{{ u }}</p>
+            </div>
           </div>
         </div>
         <!-- All Tweets -->
