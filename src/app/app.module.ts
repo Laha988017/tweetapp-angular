@@ -13,6 +13,7 @@ import { AuthGuard } from './util/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { TweetPageComponent } from './tweet-page/tweet-page.component';
+import { ForgotComponent } from './forgot/forgot.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TweetPageComponent } from './tweet-page/tweet-page.component';
     LoginComponent,
     HomeComponent,
     DateAgoPipe,
-    TweetPageComponent
+    TweetPageComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,

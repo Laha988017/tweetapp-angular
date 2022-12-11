@@ -4,6 +4,7 @@ import { User } from '../model/User';
 import { environment } from 'src/environments/environment';
 import { first, map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ForgotPassword } from '../model/ForgetPassword';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,14 @@ export class AuthService {
 
   register(registerData: User) {
     return this.http.post<any>(`${environment.register}`, registerData)
+      .pipe(map(response => {
+        console.log(response);
+        return response;
+      }));
+  }
+
+  forgotPassword(forgotData: ForgotPassword) {
+    return this.http.post<any>(`${environment.forgotPassword}` + forgotData.username + "/forgot", forgotData)
       .pipe(map(response => {
         console.log(response);
         return response;

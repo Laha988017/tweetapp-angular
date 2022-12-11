@@ -12,4 +12,5 @@ export const environment = {
   getAllTweetOfUser: `${baseUrl.apiUrl}/`,
   deleteTweet: `${baseUrl.apiUrl}/`,
   regex: `${baseUrl.apiUrl}/user/search/`,
+  forgotPassword: `${baseUrl.apiUrl}/`,
 };
